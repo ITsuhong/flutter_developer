@@ -82,6 +82,7 @@ flutter:
     - assets/school/high/
     - assets/policy/
     - assets/schoolName/
+    - assets/school_code/
     - assets/video/
     - assets/about_us/
 

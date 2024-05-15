@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _controller = PageController(initialPage: 0, keepPage: true);
+    _controller = PageController(initialPage: 0, keepPage: false);
   }
 
   onTab(int index) {

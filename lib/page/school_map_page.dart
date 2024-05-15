@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_developer/widget/scrollbar_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -70,7 +71,8 @@ class SchoolMapPage extends StatelessWidget {
               height: 140.h,
             ),
           ),
-        )
+        ),
+        Positioned(child: ScrollBarWidget(), bottom: 0, left: 0, right: 0),
       ],
     );
   }

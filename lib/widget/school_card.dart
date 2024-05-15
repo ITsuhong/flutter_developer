@@ -8,8 +8,9 @@ import 'package:get/get.dart';
 
 class SchoolCard extends StatefulWidget {
   final School school;
+  final int type;
 
-  SchoolCard({required this.school});
+  SchoolCard({required this.school, required this.type});
 
   @override
   State<StatefulWidget> createState() {
@@ -48,7 +49,7 @@ class _SchoolCardState extends State<SchoolCard> {
                     height: 52.h,
                   ),
                   Image.asset(
-                    'assets/images/school_code.png',
+                    widget.school.code,
                     height: 208.h,
                     fit: BoxFit.fill,
                   ),
@@ -123,12 +124,15 @@ class _SchoolCardState extends State<SchoolCard> {
                   ),
                   Container(
                     padding:
-                        EdgeInsets.only(top: 33.h, left: 30.w, right: 30.w),
+                        EdgeInsets.only(top: 33.h, left: 10.w, right: 10.w),
                     child: Center(
                       child: Text(
                         widget.school.title,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 30.sp,
+                          fontSize: 27.sp,
+
+                          // textBaseline: ,
                           color: ThemeColors.schoolCardTitle,
                         ),
                       ),
@@ -139,7 +143,7 @@ class _SchoolCardState extends State<SchoolCard> {
                         constraints: BoxConstraints(maxWidth: 400.w),
                         padding: EdgeInsets.only(bottom: 50.h, top: 10.h),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -159,6 +163,8 @@ class _SchoolCardState extends State<SchoolCard> {
                                         ),
                                         Positioned(
                                           child: Image.asset(
+                                              height: 4.h,
+                                              fit: BoxFit.cover,
                                               'assets/images/school_title_bg.png'),
                                           left: 0,
                                           right: 0,
@@ -175,69 +181,210 @@ class _SchoolCardState extends State<SchoolCard> {
                                     )
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    Stack(
-                                      clipBehavior: Clip.none,
-                                      children: [
-                                        Text(
-                                          "学制：",
-                                          style: TextStyle(
-                                              fontSize: 24.sp,
-                                              color:
-                                                  ThemeColors.schoolCardTitle),
-                                        ),
-                                        Positioned(
-                                          child: Image.asset(
-                                            'assets/images/school_title_bg.png',
-                                            height: 4.h,
-                                            fit: BoxFit.fill,
+                                if (widget.type < 2)
+                                  Row(
+                                    children: [
+                                      Stack(
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Text(
+                                            "学制：",
+                                            style: TextStyle(
+                                                fontSize: 24.sp,
+                                                color: ThemeColors
+                                                    .schoolCardTitle),
                                           ),
-                                          left: 0,
-                                          right: 0,
-                                          bottom: -2,
-                                        )
-                                      ],
-                                    ),
-                                    Text(
-                                      widget.school.system,
-                                      style: TextStyle(
-                                          fontSize: 24.sp,
-                                          color: ThemeColors
-                                              .schoolCardPrimaryTitle),
-                                    )
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Stack(
-                                      clipBehavior: Clip.none,
-                                      children: [
-                                        Text(
-                                          "通勤距离：",
-                                          style: TextStyle(
-                                              fontSize: 24.sp,
-                                              color:
-                                                  ThemeColors.schoolCardTitle),
-                                        ),
-                                        Positioned(
-                                          child: Image.asset(
-                                              'assets/images/school_title_bg.png'),
-                                          left: 0,
-                                          right: 0,
-                                          bottom: -2,
-                                        )
-                                      ],
-                                    ),
-                                    Text(
-                                      widget.school.distance,
-                                      style: TextStyle(
-                                          fontSize: 24.sp,
-                                          color: ThemeColors
-                                              .schoolCardPrimaryTitle),
-                                    )
-                                  ],
-                                )
+                                          Positioned(
+                                            child: Image.asset(
+                                              'assets/images/school_title_bg.png',
+                                              height: 3.h,
+                                              fit: BoxFit.fill,
+                                            ),
+                                            left: 0,
+                                            right: 0,
+                                            bottom: -2,
+                                          )
+                                        ],
+                                      ),
+                                      Text(
+                                        widget.school.system,
+                                        style: TextStyle(
+                                            fontSize: 24.sp,
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle),
+                                      )
+                                    ],
+                                  ),
+                                if (widget.type < 2)
+                                  Row(
+                                    children: [
+                                      Stack(
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Text(
+                                            "通勤距离：",
+                                            style: TextStyle(
+                                                fontSize: 24.sp,
+                                                color: ThemeColors
+                                                    .schoolCardTitle),
+                                          ),
+                                          Positioned(
+                                            child: Image.asset(
+                                                height: 3.h,
+                                                fit: BoxFit.fill,
+                                                'assets/images/school_title_bg.png'),
+                                            left: 0,
+                                            right: 0,
+                                            bottom: -2,
+                                          )
+                                        ],
+                                      ),
+                                      Text(
+                                        widget.school.distance,
+                                        style: TextStyle(
+                                            fontSize: 24.sp,
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle),
+                                      )
+                                    ],
+                                  ),
+                                if (widget.type == 2)
+                                  Row(
+                                    children: [
+                                      Stack(
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Text(
+                                            "招生（2023）：",
+                                            style: TextStyle(
+                                                fontSize: 24.sp,
+                                                color: ThemeColors
+                                                    .schoolCardTitle),
+                                          ),
+                                          Positioned(
+                                            child: Image.asset(
+                                                'assets/images/school_title_bg.png'),
+                                            left: 0,
+                                            right: 0,
+                                            bottom: -2,
+                                          )
+                                        ],
+                                      ),
+                                      Text(
+                                        widget.school.enroll!,
+                                        style: TextStyle(
+                                            fontSize: 24.sp,
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle),
+                                      )
+                                    ],
+                                  ),
+                                if (widget.type == 2)
+                                  Row(
+                                    // mainAxisAlignment: MainAxisAlignment.s,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Stack(
+                                            clipBehavior: Clip.none,
+                                            children: [
+                                              Text(
+                                                "统招：",
+                                                style: TextStyle(
+                                                    fontSize: 24.sp,
+                                                    color: ThemeColors
+                                                        .schoolCardTitle),
+                                              ),
+                                              Positioned(
+                                                child: Image.asset(
+                                                    height: 4.h,
+                                                    fit: BoxFit.fill,
+                                                    'assets/images/school_title_bg.png'),
+                                                left: 0,
+                                                right: 0,
+                                                bottom: -2,
+                                              )
+                                            ],
+                                          ),
+                                          Text(
+                                            widget.school.unifiedRecruit!,
+                                            style: TextStyle(
+                                                fontSize: 24.sp,
+                                                color: ThemeColors
+                                                    .schoolCardPrimaryTitle),
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: 20.w,
+                                      ),
+                                      widget.school.dispens != null
+                                          ? Row(
+                                              children: [
+                                                Stack(
+                                                  clipBehavior: Clip.none,
+                                                  children: [
+                                                    Text(
+                                                      "调剂：",
+                                                      style: TextStyle(
+                                                          fontSize: 24.sp,
+                                                          color: ThemeColors
+                                                              .schoolCardTitle),
+                                                    ),
+                                                    Positioned(
+                                                      child: Image.asset(
+                                                          height: 4.h,
+                                                          fit: BoxFit.fill,
+                                                          'assets/images/school_title_bg.png'),
+                                                      left: 0,
+                                                      right: 0,
+                                                      bottom: -2,
+                                                    )
+                                                  ],
+                                                ),
+                                                Text(
+                                                  widget.school.dispens!,
+                                                  style: TextStyle(
+                                                      fontSize: 24.sp,
+                                                      color: ThemeColors
+                                                          .schoolCardPrimaryTitle),
+                                                )
+                                              ],
+                                            )
+                                          : Row(
+                                              children: [
+                                                Stack(
+                                                  clipBehavior: Clip.none,
+                                                  children: [
+                                                    Text(
+                                                      "平均：",
+                                                      style: TextStyle(
+                                                          fontSize: 24.sp,
+                                                          color: ThemeColors
+                                                              .schoolCardTitle),
+                                                    ),
+                                                    Positioned(
+                                                      child: Image.asset(
+                                                          height: 4.h,
+                                                          fit: BoxFit.fill,
+                                                          'assets/images/school_title_bg.png'),
+                                                      left: 0,
+                                                      right: 0,
+                                                      bottom: -2,
+                                                    )
+                                                  ],
+                                                ),
+                                                Text(
+                                                  widget.school.average!,
+                                                  style: TextStyle(
+                                                      fontSize: 24.sp,
+                                                      color: ThemeColors
+                                                          .schoolCardPrimaryTitle),
+                                                )
+                                              ],
+                                            )
+                                    ],
+                                  )
                               ],
                             )
                           ],

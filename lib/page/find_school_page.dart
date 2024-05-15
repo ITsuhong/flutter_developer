@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_developer/data/school_list.dart';
 import 'package:flutter_developer/widget/school_card.dart';
+import 'package:flutter_developer/widget/scrollbar_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -68,15 +69,15 @@ class _FindSchoolPageState extends State<FindSchoolPage> {
                             scrollToStart();
                           });
                         },
-                        child:Container(
+                        child: Container(
                             margin: index == 2
                                 ? null
                                 : EdgeInsets.only(right: 130.w),
                             child: activeButton == index
                                 ? Image.asset(typeButtons[index].activeIcon,
-                                width: 290.w, height: 80.h)
+                                    width: 290.w, height: 80.h)
                                 : Image.asset(typeButtons[index].icon,
-                                width: 290.w, height: 80.h)),
+                                    width: 290.w, height: 80.h)),
                       );
                     })),
               ),
@@ -94,6 +95,7 @@ class _FindSchoolPageState extends State<FindSchoolPage> {
                       return Container(
                         margin: EdgeInsets.only(right: 40.w),
                         child: SchoolCard(
+                          type: activeButton,
                           school: schoolList[activeButton][index],
                         ),
                       );
@@ -109,7 +111,8 @@ class _FindSchoolPageState extends State<FindSchoolPage> {
             height: 58.h,
             'assets/images/xqbk_logo.png',
             fit: BoxFit.cover,
-          ))
+          )),
+      Positioned(child: ScrollBarWidget(), bottom: 0, left: 0, right: 0),
     ]);
   }
 }

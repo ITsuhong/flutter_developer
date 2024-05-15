@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="flutter_developer"
+        android:label="成都学区百科"
         android:name="com.example.flutter_developer.MyApplication"
         android:icon="@mipmap/ic_launcher">
         <activity

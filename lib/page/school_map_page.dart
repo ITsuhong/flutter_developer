@@ -72,7 +72,7 @@ class SchoolMapPage extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(child: ScrollBarWidget(), bottom: 0, left: 0, right: 0),
+        // Positioned(child: ScrollBarWidget(), bottom: 0, left: 0, right: 0),
       ],
     );
   }

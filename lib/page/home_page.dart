@@ -7,6 +7,8 @@ import 'package:flutter_developer/page/school_map_page.dart';
 import 'package:flutter_developer/widget/cus_bottom_bar.dart';
 import 'package:get/get.dart';
 
+import '../widget/scrollbar_widget.dart';
+
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -59,6 +61,11 @@ class _HomePageState extends State<HomePage> {
             itemCount: pages.length,
             itemBuilder: (context, index) => pages[index],
           ),
+          Obx(() => Positioned(
+              child: currentIndex.value == 0 ? SizedBox() : ScrollBarWidget(),
+              bottom: 0,
+              left: 0,
+              right: 0)),
         ],
       ),
       bottomNavigationBar: Obx(() => CusBottomBar(

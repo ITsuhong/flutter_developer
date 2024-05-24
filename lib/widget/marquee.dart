@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class Marquee extends StatefulWidget {
   const Marquee({required this.child, this.speed = 10, Key? key})
@@ -53,19 +54,30 @@ class _MarqueeState extends State<Marquee> with SingleTickerProviderStateMixin {
       scrollDirection: Axis.horizontal,
       child: _scrctrl.hasClients
           ? Row(
-        children: [
-          SizedBox(
-            width: _space,
-          ),
-          widget.child,
-          SizedBox(
-            width: _space,
-          ),
-        ],
-      )
+              children: [
+                SizedBox(
+                  width: _space,
+                ),
+                widget.child,
+                SizedBox(
+                  width: _space,
+                ),
+              ],
+            )
           : const SizedBox(),
     );
-    return _scrollView ?? Column();
+    return VisibilityDetector(
+        key: Key("2"),
+        child: _scrollView ?? Column(),
+        onVisibilityChanged: (value) {
+          if (value.visibleFraction == 1.0) {
+            _controller.repeat();
+          } else {
+            if (_controller.isAnimating) {
+              _controller.stop();
+            }
+          }
+        });
   }
 
   @override
@@ -74,4 +86,3 @@ class _MarqueeState extends State<Marquee> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 }
-

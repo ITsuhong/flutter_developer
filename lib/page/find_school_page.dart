@@ -112,7 +112,7 @@ class _FindSchoolPageState extends State<FindSchoolPage> {
             'assets/images/xqbk_logo.png',
             fit: BoxFit.cover,
           )),
-      Positioned(child: ScrollBarWidget(), bottom: 0, left: 0, right: 0),
+      // Positioned(child: ScrollBarWidget(), bottom: 0, left: 0, right: 0),
     ]);
   }
 }

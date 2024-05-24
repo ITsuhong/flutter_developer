@@ -144,7 +144,8 @@ class _HomeVideoPageState extends State<HomeVideoPage> with AutomaticKeepAliveCl
            _controller.pause();
            playState.value = 'pause';
          }
-        });
+        }
+        );
   }
 
   void playOrPauseVideo() {

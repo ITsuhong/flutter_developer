@@ -20,7 +20,11 @@ void main() async {
   // Request.setupInterceptors();
   runApp(const MyApp());
   LocationFlutterPlugin myLocPlugin = LocationFlutterPlugin();
-
+  // 强制横屏
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight
+  ]);
   /// 设置用户是否同意SDK隐私协议
   /// since 3.1.0 开发者必须设置
   // BMFMapSDK.setAgreePrivacy(true);

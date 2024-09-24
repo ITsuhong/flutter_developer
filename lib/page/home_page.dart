@@ -6,6 +6,7 @@ import 'package:flutter_developer/page/home_video_page.dart';
 import 'package:flutter_developer/page/school_map_page.dart';
 import 'package:flutter_developer/widget/cus_bottom_bar.dart';
 import 'package:get/get.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -25,12 +26,31 @@ class _HomePageState extends State<HomePage> {
     HomeVideoPage(),
     AboutUsPage()
   ];
+  List<String> imagesList = [
+    'assets/school/sl/1.jpg',
+    'assets/school/yh/1.jpg',
+    'assets/school/qz/1.jpg',
+    'assets/school/jx/1.jpg',
+    // 'assets/school/sl/2.jpg',
+    // 'assets/school/sl/3.jpg',
+    // 'assets/school/sl/4.jpg',
+    // 'assets/school/sl/5.jpg',
+    // 'assets/school/sl/6.jpg',
+  ];
 
   @override
   void initState() {
     super.initState();
     _controller = PageController(initialPage: 0, keepPage: false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // _precacheImages();
+    });
   }
+
+  // didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //
+  // }
 
   onTab(int index) {
     if (index == 3) {
@@ -40,8 +60,16 @@ class _HomePageState extends State<HomePage> {
     _controller.jumpToPage(index);
   }
 
+  Future<void> _precacheImages() async {
+    DefaultCacheManager cacheManager = DefaultCacheManager();
+    for (String image in imagesList) {
+      await cacheManager.getSingleFile(image);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    // _precacheImages(context);
     return Scaffold(
       body: Stack(
         children: [

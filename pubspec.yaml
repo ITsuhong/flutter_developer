@@ -46,6 +46,7 @@ dependencies:
   flutter_baidu_mapapi_search: ^3.6.0
   flutter_bmflocation: ^3.6.0
   visibility_detector:
+  flutter_cache_manager:
 dev_dependencies:
   flutter_test:
     sdk: flutter

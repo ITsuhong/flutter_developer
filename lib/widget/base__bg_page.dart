@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_developer/widget/scrollbar_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -26,10 +27,14 @@ class _BaseBgPageState extends State<BaseBgPage> {
     // TODO: implement initState
     super.initState();
     _pageController = PageController(initialPage: 0);
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   _precacheImages();
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
+    precacheImage(AssetImage('assets/school/sl/1.jpg'), context);
     return Stack(
       children: [
         SizedBox(
@@ -53,9 +58,22 @@ class _BaseBgPageState extends State<BaseBgPage> {
               itemCount: widget.pagesData.length,
               itemBuilder: (context, index) {
                 return KeepAliveWrapper(
-                    child: Image.asset(
-                  widget.pagesData[index],
-                  fit: BoxFit.cover,
+                    child: Stack(
+                  children: [
+                    Positioned(
+                        child: Image(
+                      width: MediaQuery.of(context).size.width,
+                      image: ResizeImage(
+                        AssetImage(widget.pagesData[index]),
+                        height: MediaQuery.of(context).size.height.toInt(),
+                      ),
+                    )),
+                    Positioned(
+                        child: Image.asset(
+                      widget.pagesData[index],
+                      width: MediaQuery.of(context).size.width,
+                    )),
+                  ],
                 ));
               }),
         )),

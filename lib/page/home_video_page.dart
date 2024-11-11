@@ -61,10 +61,17 @@ class _HomeVideoPageState extends State<HomeVideoPage> with AutomaticKeepAliveCl
           child: Stack(
             children: [
               Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
+                width: _controller.value.size.width,
+                height: _controller.value.size.height,
                 child: _controller.value.isInitialized
-                    ? VideoPlayer(_controller)
+                    ?FittedBox(
+                  fit: BoxFit.contain,
+                  child: SizedBox(
+                    width: _controller.value.size.width,
+                    height: _controller.value.size.height,
+                    child: VideoPlayer(_controller),
+                  ),
+                )
                     : Center(
                         child: Text(
                           "加载中",

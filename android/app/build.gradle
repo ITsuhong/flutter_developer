@@ -38,7 +38,7 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         multiDexEnabled true
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -81,5 +81,7 @@ dependencies {
 //    androidTestImplementation 'androidx.test:runner:1.1.1'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 //    implementation fileTree(includes: ['*.jar'], dir: 'Libs')
+    implementation('com.amap.api:3dmap:9.4.0')
+    implementation('com.tencent.map:tencent-map-vector-sdk:4.4.0')
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 }

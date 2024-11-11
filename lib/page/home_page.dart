@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_developer/page/about_us_page.dart';
+import 'package:flutter_developer/page/amap_page.dart';
 import 'package:flutter_developer/page/find_school_page.dart';
 import 'package:flutter_developer/page/home_video_page.dart';
+import 'package:flutter_developer/page/map_page.dart';
 import 'package:flutter_developer/page/school_map_page.dart';
+
 import 'package:flutter_developer/widget/cus_bottom_bar.dart';
+import 'package:flutter_developer/widget/keep_alive_wrapper.dart';
 import 'package:get/get.dart';
 
 import '../widget/scrollbar_widget.dart';
@@ -22,7 +26,9 @@ class _HomePageState extends State<HomePage> {
   late PageController _controller;
   List<Widget> pages = [
     HomeVideoPage(),
-    SchoolMapPage(),
+    // SchoolMapPage(),
+    MapPage(),
+    // AmapPage(),
     FindSchoolPage(),
     HomeVideoPage(),
     AboutUsPage()
@@ -36,7 +42,7 @@ class _HomePageState extends State<HomePage> {
 
   onTab(int index) {
     if (index == 3) {
-      return Get.toNamed('/policy');
+      return Get.toNamed('/Amap');
     }
     currentIndex.value = index;
     _controller.jumpToPage(index);
@@ -59,7 +65,7 @@ class _HomePageState extends State<HomePage> {
             controller: _controller,
             physics: const NeverScrollableScrollPhysics(), //禁止滑动
             itemCount: pages.length,
-            itemBuilder: (context, index) => pages[index],
+            itemBuilder: (context, index) =>KeepAliveWrapper(child:  pages[index]),
           ),
           Obx(() => Positioned(
               child: currentIndex.value == 0 ? SizedBox() : ScrollBarWidget(),

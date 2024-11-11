@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
+        android:allowNativeHeapPointerTagging="false"
         android:label="成都学区百科"
         android:name="com.example.flutter_developer.MyApplication"
         android:icon="@mipmap/ic_launcher">
@@ -29,6 +30,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="TencentMapSDK"
+            android:value="XPDBZ-JUFOU-LRLVP-2WVWI-3CZ6T-QMFZA"/>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility?hl=en and

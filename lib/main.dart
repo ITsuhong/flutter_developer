@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_developer/page/home_page.dart';
+import 'package:flutter_developer/utils/OfflineMapManager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_developer/AppPages%20.dart';
@@ -18,9 +19,16 @@ void main() async {
 
   // 在启动应用程序之前设置拦截器
   // Request.setupInterceptors();
+  WidgetsFlutterBinding.ensureInitialized(); //不加这个强制横/竖屏会报错
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
   runApp(const MyApp());
   LocationFlutterPlugin myLocPlugin = LocationFlutterPlugin();
+  OfflineMapManager offlineMapManager= OfflineMapManager();
+  // offlineMapManager.init();
+  // offlineMapManager.startDownload(75);
 
+  
   /// 设置用户是否同意SDK隐私协议
   /// since 3.1.0 开发者必须设置
   // BMFMapSDK.setAgreePrivacy(true);

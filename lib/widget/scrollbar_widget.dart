@@ -18,11 +18,11 @@ class ScrollBarWidgetState extends State<ScrollBarWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(milliseconds: 500), () {
-      setState(() {
-        isShow = true;
-      });
-    });
+    // Future.delayed(Duration(milliseconds: 500), () {
+    //   setState(() {
+    //     isShow = true;
+    //   });
+    // });
   }
 
   @override

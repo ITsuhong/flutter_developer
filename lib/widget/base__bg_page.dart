@@ -55,7 +55,7 @@ class _BaseBgPageState extends State<BaseBgPage> {
                 return KeepAliveWrapper(
                     child: Image.asset(
                   widget.pagesData[index],
-                  fit: BoxFit.cover,
+                  // fit: BoxFit.cover,
                 ));
               }),
         )),

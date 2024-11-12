@@ -25,11 +25,13 @@ class _CusBottomBarState extends State<CusBottomBar> {
     return Container(
       padding: const EdgeInsets.only(top: 1),
       decoration: BoxDecoration(
+
         gradient: LinearGradient(colors: [
           HexColor('#E0C89D'),
           HexColor('#136968'),
           HexColor('#E0C89D'),
-        ]),
+        ]
+        ),
       ),
       child: Container(
         padding: EdgeInsets.only(left: 83.w, right: 83.w, top: 42.h),

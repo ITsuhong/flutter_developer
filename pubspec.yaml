@@ -80,10 +80,15 @@ flutter:
     - assets/images/
     - assets/bottomBar/
     - assets/school/
-    - assets/school/sl/
-    - assets/school/jx/
-    - assets/school/qz/
-    - assets/school/yh/
+    - assets/school/SH/
+    - assets/school/DCG/
+    - assets/school/HM/
+    - assets/school/PTS/
+    - assets/school/CH/
+    - assets/school/SC/
+    - assets/school/SX/
+    - assets/school/SY/
+    - assets/school/QY/
     - assets/school/primary/
     - assets/school/middle/
     - assets/school/high/

@@ -4,6 +4,5 @@ class PolicyList {
     'assets/policy/2.png',
     'assets/policy/3.png',
     'assets/policy/4.png',
-    'assets/policy/5.png',
   ];
 }

@@ -3,23 +3,18 @@ class School {
   String name;
   String way;
   String system;
-  String distance;
+  String section;
+  String totalPrice;
   String url;
-  String code;
-  String? enroll; //招生
-  String? unifiedRecruit; //统招
-  String? average; //平均分
-  String? dispens; //调剂
+  String fullName;
+
   School(
       {required this.title,
       required this.name,
       required this.way,
       required this.system,
-      required this.distance,
+      required this.section,
+      required this.totalPrice,
       required this.url,
-        required this.code,
-      this.average,
-      this.enroll,
-      this.dispens,
-      this.unifiedRecruit});
+      required this.fullName});
 }

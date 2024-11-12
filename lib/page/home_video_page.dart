@@ -5,16 +5,18 @@ import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+import '../theme/theme_colors.dart';
+import '../utils/HexColor.dart';
+
 class HomeVideoPage extends StatefulWidget {
-
-
   @override
   State<StatefulWidget> createState() {
     return _HomeVideoPageState();
   }
 }
 
-class _HomeVideoPageState extends State<HomeVideoPage> with AutomaticKeepAliveClientMixin{
+class _HomeVideoPageState extends State<HomeVideoPage>
+    with AutomaticKeepAliveClientMixin {
   late VideoPlayerController _controller;
   var isInit = false;
   var playState = 'pause'.obs;
@@ -64,14 +66,14 @@ class _HomeVideoPageState extends State<HomeVideoPage> with AutomaticKeepAliveCl
                 width: _controller.value.size.width,
                 height: _controller.value.size.height,
                 child: _controller.value.isInitialized
-                    ?FittedBox(
-                  fit: BoxFit.contain,
-                  child: SizedBox(
-                    width: _controller.value.size.width,
-                    height: _controller.value.size.height,
-                    child: VideoPlayer(_controller),
-                  ),
-                )
+                    ? FittedBox(
+                        fit: BoxFit.contain,
+                        child: SizedBox(
+                          width: _controller.value.size.width,
+                          height: _controller.value.size.height,
+                          child: VideoPlayer(_controller),
+                        ),
+                      )
                     : Center(
                         child: Text(
                           "加载中",
@@ -89,70 +91,414 @@ class _HomeVideoPageState extends State<HomeVideoPage> with AutomaticKeepAliveCl
                       )),
               ),
               Positioned(
-                  right: -4,
-                  bottom: MediaQuery.of(context).size.height * 0.4,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.toNamed("school_info", arguments: 0);
-                    },
-                    child: Image.asset(
-                      'assets/schoolName/school_sl.png',
-                      fit: BoxFit.cover,
-                      height: 96.h,
+                  left: 54,
+                  top: 100,
+                  // bottom: MediaQuery.of(context).size.height * 0.4,
+                  child: Opacity(
+                    opacity: 0.8,
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 0.7, bottom: 0.7),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            HexColor('#E0C89D'),
+                            HexColor('#136968'),
+                            HexColor('#E0C89D'),
+                          ],
+                          // begin: Alignment.topCenter,
+                          // end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        width: 550.w,
+                        height: 510.h,
+                        decoration: BoxDecoration(color: HexColor("#365951")
+                            // color: Color.fromRGBO(47, 83, 79)
+                            ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text("成都5朵金花",
+
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 30.sp,
+                                        color: ThemeColors
+                                            .schoolCardPrimaryTitle)),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5),
+                                  width: 6,
+                                  height: 6,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    border: new Border.all(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        width: 0.5),
+                                  ),
+                                  child: Center(
+                                    child: Container(
+                                      width: 3,
+                                      height: 3,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                        border: new Border.all(
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle,
+                                            width: 0.5),
+                                      ),
+                                    ),
+                                  ),
+                                  // child: ,
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text("溜爸40强 TOP1",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 30.sp,
+                                        color: ThemeColors
+                                            .schoolCardPrimaryTitle)),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5),
+                                  width: 6,
+                                  height: 6,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    border: new Border.all(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        width: 0.5),
+                                  ),
+                                  child: Center(
+                                    child: Container(
+                                      width: 3,
+                                      height: 3,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                        border: new Border.all(
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle,
+                                            width: 0.5),
+                                      ),
+                                    ),
+                                  ),
+                                  // child: ,
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text("百年“老店”，底蕴深厚",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 30.sp,
+                                        color: ThemeColors
+                                            .schoolCardPrimaryTitle)),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5),
+                                  width: 6,
+                                  height: 6,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    border: new Border.all(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        width: 0.5),
+                                  ),
+                                  child: Center(
+                                    child: Container(
+                                      width: 3,
+                                      height: 3,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                        border: new Border.all(
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle,
+                                            width: 0.5),
+                                      ),
+                                    ),
+                                  ),
+                                  // child: ,
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text("市中心摩珂池公园中的小学",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 30.sp,
+                                        color: ThemeColors
+                                            .schoolCardPrimaryTitle)),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5),
+                                  width: 6,
+                                  height: 6,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    border: new Border.all(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        width: 0.5),
+                                  ),
+                                  child: Center(
+                                    child: Container(
+                                      width: 3,
+                                      height: 3,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                        border: new Border.all(
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle,
+                                            width: 0.5),
+                                      ),
+                                    ),
+                                  ),
+                                  // child: ,
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                   )),
               Positioned(
-                  right: -4,
-                  bottom: MediaQuery.of(context).size.height * 0.4 - 100.h,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.toNamed("school_info", arguments: 1);
-                    },
-                    child: Image.asset(
-                      'assets/schoolName/school_yh.png',
-                      fit: BoxFit.cover,
-                      height: 96.h,
+                  right: 54,
+                  top: 100,
+                  // bottom: MediaQuery.of(context).size.height * 0.4,
+                  child: Opacity(
+                    opacity: 0.8,
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 0.7, bottom: 0.7),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            HexColor('#E0C89D'),
+                            HexColor('#136968'),
+                            HexColor('#E0C89D'),
+                          ],
+                          // begin: Alignment.topCenter,
+                          // end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        width: 550.w,
+                        height: 510.h,
+                        decoration: BoxDecoration(color: HexColor("#365951")
+                            // color: Color.fromRGBO(47, 83, 79)
+                            ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 5),
+                                  width: 6,
+                                  height: 6,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    border: new Border.all(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        width: 0.5),
+                                  ),
+                                  child: Center(
+                                    child: Container(
+                                      width: 3,
+                                      height: 3,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            ThemeColors.schoolCardPrimaryTitle,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                        border: new Border.all(
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle,
+                                            width: 0.5),
+                                      ),
+                                    ),
+                                  ),
+                                  // child: ,
+                                ),
+                                Text("成都家长的热门之选",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 30.sp,
+                                        color: ThemeColors
+                                            .schoolCardPrimaryTitle)),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 5),
+                                  width: 6,
+                                  height: 6,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
+                                    border: new Border.all(
+                                        color:
+                                        ThemeColors.schoolCardPrimaryTitle,
+                                        width: 0.5),
+                                  ),
+                                  child: Center(
+                                    child: Container(
+                                      width: 3,
+                                      height: 3,
+                                      decoration: BoxDecoration(
+                                        color:
+                                        ThemeColors.schoolCardPrimaryTitle,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                        border: new Border.all(
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle,
+                                            width: 0.5),
+                                      ),
+                                    ),
+                                  ),
+                                  // child: ,
+                                ),
+                                Text("穿越低迷周期，房价逆势上扬",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 30.sp,
+                                        color: ThemeColors
+                                            .schoolCardPrimaryTitle)),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 5),
+                                  width: 6,
+                                  height: 6,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
+                                    border: new Border.all(
+                                        color:
+                                        ThemeColors.schoolCardPrimaryTitle,
+                                        width: 0.5),
+                                  ),
+                                  child: Center(
+                                    child: Container(
+                                      width: 3,
+                                      height: 3,
+                                      decoration: BoxDecoration(
+                                        color:
+                                        ThemeColors.schoolCardPrimaryTitle,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                        border: new Border.all(
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle,
+                                            width: 0.5),
+                                      ),
+                                    ),
+                                  ),
+                                  // child: ,
+                                ),
+                                Text("强流动性，最低成交仅6天",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 30.sp,
+                                        color: ThemeColors
+                                            .schoolCardPrimaryTitle)),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 5),
+                                  width: 6,
+                                  height: 6,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
+                                    border: new Border.all(
+                                        color:
+                                        ThemeColors.schoolCardPrimaryTitle,
+                                        width: 0.5),
+                                  ),
+                                  child: Center(
+                                    child: Container(
+                                      width: 3,
+                                      height: 3,
+                                      decoration: BoxDecoration(
+                                        color:
+                                        ThemeColors.schoolCardPrimaryTitle,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                        border: new Border.all(
+                                            color: ThemeColors
+                                                .schoolCardPrimaryTitle,
+                                            width: 0.5),
+                                      ),
+                                    ),
+                                  ),
+                                  // child: ,
+                                ),
+                                Text("最低挂户门槛150万+",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                        fontSize: 30.sp,
+                                        color: ThemeColors
+                                            .schoolCardPrimaryTitle)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                   )),
-              Positioned(
-                  right: -4,
-                  bottom: MediaQuery.of(context).size.height * 0.4 - 200.h,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.toNamed("school_info", arguments: 2);
-                    },
-                    child: Image.asset(
-                      'assets/schoolName/school_qz.png',
-                      fit: BoxFit.cover,
-                      height: 96.h,
-                    ),
-                  )),
-              Positioned(
-                  right: -4,
-                  bottom: MediaQuery.of(context).size.height * 0.4 - 300.h,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.toNamed("school_info", arguments: 3);
-                    },
-                    child: Image.asset(
-                      'assets/schoolName/school_jx.png',
-                      fit: BoxFit.cover,
-                      height: 96.h,
-                    ),
-                  ))
             ],
           ),
         ),
         onVisibilityChanged: (value) {
-         if(value.visibleFraction == 1.0){
-           _controller.play();
-           playState.value = 'play';
-         }else{
-           _controller.pause();
-           playState.value = 'pause';
-         }
-        }
-        );
+          if (value.visibleFraction == 1.0) {
+            _controller.play();
+            playState.value = 'play';
+          } else {
+            _controller.pause();
+            playState.value = 'pause';
+          }
+        });
   }
 
   void playOrPauseVideo() {
@@ -167,5 +513,4 @@ class _HomeVideoPageState extends State<HomeVideoPage> with AutomaticKeepAliveCl
   @override
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
-
 }

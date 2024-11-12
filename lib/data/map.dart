@@ -1,3 +1,5 @@
+import 'package:flutter_developer/data/school_info_list.dart';
+
 class MapData {
   static List<List<Map<String, double>>> data = [
     [
@@ -359,14 +361,21 @@ class MapData {
     ]
   ];
   static List<SchoolData> primary = [
-    SchoolData('成都市石室联合中学蜀华分校', [30.658455, 104.052997]),
-    SchoolData('成都市东城根街小学', [30.669197, 104.060843]),
-    SchoolData('成都市回民小学', [30.6590992, 104.0619301]),
-    SchoolData('成都市泡桐树小学', [30.665547, 104.055344]),
-    SchoolData('成都市彩虹小学', [30.65044963, 104.0573407]),
-    SchoolData('成都市少城小学', [30.66201959, 104.0539709]),
-    SchoolData('成都市胜西小学', [30.66004961, 104.0535603]),
-    SchoolData('成都市实验小学', [30.663841, 104.064352]),
+    SchoolData(
+        '成都市石室联合中学蜀华分校', [30.658455, 104.052997], SchoolListInfo.schoolSHList),
+    SchoolData(
+        '成都市东城根街小学', [30.669197, 104.060843], SchoolListInfo.schoolDCGList),
+    SchoolData(
+        '成都市回民小学', [30.6590992, 104.0619301], SchoolListInfo.schoolHMList),
+    SchoolData(
+        '成都市泡桐树小学', [30.665547, 104.055344], SchoolListInfo.schoolPTSList),
+    SchoolData(
+        '成都市彩虹小学', [30.65044963, 104.0573407], SchoolListInfo.schoolCHList),
+    SchoolData(
+        '成都市少城小学', [30.66201959, 104.0539709], SchoolListInfo.schoolSCList),
+    SchoolData(
+        '成都市胜西小学', [30.66004961, 104.0535603], SchoolListInfo.schoolSXList),
+    SchoolData('成都市实验小学', [30.663841, 104.064352], SchoolListInfo.schoolSYList),
   ];
 
   static List<SchoolData> middle = [
@@ -380,6 +389,8 @@ class MapData {
 class SchoolData {
   String name;
   List<double> position;
+  List<String>? paths;
 
-  SchoolData(this.name, this.position);
+  SchoolData(this.name, this.position, [this.paths]);
+
 }

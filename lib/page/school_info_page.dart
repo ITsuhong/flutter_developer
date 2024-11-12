@@ -12,19 +12,16 @@ class SchoolInfoPage extends StatefulWidget {
 }
 
 class _SchoolInfoPageState extends State<SchoolInfoPage> {
-  List PagedData = [
-    SchoolListInfo.schoolSlList,
-    SchoolListInfo.schoolYhList,
-    SchoolListInfo.schoolQzList,
-    SchoolListInfo.schoolJxList
-  ];
+  List PagedData = [];
 
   @override
   Widget build(BuildContext context) {
-    var index = Get.arguments;
+    String name = Get.arguments['name'];
+    print("信息${name}");
+    PagedData=SchoolListInfo().getList(name);
     return Scaffold(
         body: BaseBgPage(
-      pagesData: PagedData[index],
+      pagesData: PagedData,
     ));
   }
 }

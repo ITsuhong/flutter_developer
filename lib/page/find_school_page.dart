@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_developer/data/school_list.dart';
+import 'package:flutter_developer/widget/qy_school_card.dart';
 import 'package:flutter_developer/widget/school_card.dart';
 import 'package:flutter_developer/widget/scrollbar_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,8 +30,8 @@ class _FindSchoolPageState extends State<FindSchoolPage> {
 
   final List schoolList = [
     SchoolList.primarySchoolLists,
-    SchoolList.middleSchoolLists,
-    SchoolList.highSchoolLists
+    // SchoolList.middleSchoolLists,
+    // SchoolList.highSchoolLists
   ];
 
   int activeButton = 0;
@@ -58,49 +59,55 @@ class _FindSchoolPageState extends State<FindSchoolPage> {
           top: 84.h,
           child: Column(
             children: [
-              Center(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(3, (index) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            activeButton = index;
-                            scrollToStart();
-                          });
-                        },
-                        child: Container(
-                            margin: index == 2
-                                ? null
-                                : EdgeInsets.only(right: 130.w),
-                            child: activeButton == index
-                                ? Image.asset(typeButtons[index].activeIcon,
-                                    width: 290.w, height: 80.h)
-                                : Image.asset(typeButtons[index].icon,
-                                    width: 290.w, height: 80.h)),
-                      );
-                    })),
-              ),
+              // Center(
+              //   child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: List.generate(3, (index) {
+              //         return GestureDetector(
+              //           onTap: () {
+              //             setState(() {
+              //               activeButton = index;
+              //               scrollToStart();
+              //             });
+              //           },
+              //           child: Container(
+              //               margin: index == 2
+              //                   ? null
+              //                   : EdgeInsets.only(right: 130.w),
+              //               child: activeButton == index
+              //                   ? Image.asset(typeButtons[index].activeIcon,
+              //                       width: 290.w, height: 80.h)
+              //                   : Image.asset(typeButtons[index].icon,
+              //                       width: 290.w, height: 80.h)),
+              //         );
+              //       })),
+              // ),
               Container(
-                margin: EdgeInsets.only(top: 50.h),
-                width: MediaQuery.of(context).size.width,
-                height: 635.h,
-                child: ListView.builder(
-                    controller: _pageController,
-                    padding: EdgeInsets.only(left: 70.w),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: schoolList[activeButton].length,
-                    itemExtent: 416.w + 40.w,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: EdgeInsets.only(right: 40.w),
-                        child: SchoolCard(
-                          type: activeButton,
-                          school: schoolList[activeButton][index],
-                        ),
-                      );
-                    }),
-              )
+                  margin: EdgeInsets.only(top: 60.h),
+                  width: MediaQuery.of(context).size.width,
+                  height: 680.h,
+                  child: ListView.builder(
+                      controller: _pageController,
+                      padding: EdgeInsets.only(left: 70.w),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: schoolList[activeButton].length,
+                      itemExtent: 416.w + 40.w,
+                      itemBuilder: (context, index) {
+                        if (index == 0) {
+                          return  Container(
+                            margin: EdgeInsets.only(right: 40.w),
+                            child: QYSchoolCard(),
+                          );
+                        } else {
+                          return Container(
+                            margin: EdgeInsets.only(right: 40.w),
+                            child: SchoolCard(
+                              type: activeButton,
+                              school: schoolList[activeButton][index],
+                            ),
+                          );
+                        }
+                      }))
             ],
           )),
       Positioned(

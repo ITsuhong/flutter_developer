@@ -5,6 +5,7 @@ import 'package:flutter_baidu_mapapi_base/flutter_baidu_mapapi_base.dart';
 import 'package:flutter_baidu_mapapi_map/flutter_baidu_mapapi_map.dart';
 import 'package:flutter_developer/data/map.dart';
 import 'package:flutter_developer/utils/HexColor.dart';
+import 'package:get/get.dart';
 
 class MapPage extends StatefulWidget {
   @override
@@ -15,9 +16,13 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
   late BMFMapController myMapController;
+
+  // 假设 g_map_BMFMarkerID_dwIndex 和 g_listBMFMarker 是全局变量
+  Map<dynamic, String> g_map_BMFMarkerID = {};
+  List<BMFMarker> g_listBMFMarker = [];
   BMFMapOptions mapOptions = BMFMapOptions(
       // buildingsEnabled:true,
-      mapType:BMFMapType.Satellite,
+      mapType: BMFMapType.Satellite,
       center: BMFCoordinate(30.669197, 104.060843),
       zoomLevel: 16,
       mapPadding: BMFEdgeInsets(left: 30, top: 0, right: 30, bottom: 0));
@@ -39,7 +44,6 @@ class _MapPageState extends State<MapPage> {
                 onBMFMapCreated: (controller) {
                   print("object");
                   myMapController = controller;
-
 
                   /// 坐标点
                   List<BMFPolygon> polygonList = [];
@@ -75,27 +79,6 @@ class _MapPageState extends State<MapPage> {
                       resultmiddle = CoordTransform.transformGCJ02toBD09(
                           value.position[1], value.position[0]);
                       BMFMarker marker = BMFMarker.icon(
-
-                          isLockedToScreen: true,
-                          position:
-                          BMFCoordinate(resultmiddle.lat, resultmiddle.lon),
-                          title: 'flutterMaker',
-                          titleOptions: BMFTitleOptions(
-                              text: value.name,
-                              fontSize: 40,
-                              fontColor: HexColor("#35a8f3"),
-                              // bgColor: Colors.white,
-                              titleAnchorY: -1.6),
-                          identifier: 'flutter_marker',
-                          icon: 'assets/images/nav-primary.png');
-                      myMapController?.addMarker(marker);
-                    }
-                    for (var value in MapData.middle) {
-                      CoordResult resultmiddle;
-                      resultmiddle = CoordTransform.transformGCJ02toBD09(
-                          value.position[1], value.position[0]);
-                      BMFMarker marker = BMFMarker.icon(
-
                           isLockedToScreen: true,
                           position:
                               BMFCoordinate(resultmiddle.lat, resultmiddle.lon),
@@ -103,30 +86,51 @@ class _MapPageState extends State<MapPage> {
                           titleOptions: BMFTitleOptions(
                               text: value.name,
                               fontSize: 40,
-                              fontColor: HexColor("#fff1b8"),
+                              fontColor: HexColor("#35a8f3"),
                               // bgColor: Colors.white,
                               titleAnchorY: -1.6),
-                          identifier: 'flutter_marker',
-                          icon: 'assets/images/nav-middle.png');
+                          identifier: value.name,
+                          icon: 'assets/images/nav-primary.png');
+                      // g_map_BMFMarkerID_dwIndex[marker.getId()] = i;
+                      // g_listBMFMarker.add(marker);
+                      g_map_BMFMarkerID[marker.toMap()['id']] = value.name;
                       myMapController?.addMarker(marker);
                     }
+                    // for (var value in MapData.middle) {
+                    //   CoordResult resultmiddle;
+                    //   resultmiddle = CoordTransform.transformGCJ02toBD09(
+                    //       value.position[1], value.position[0]);
+                    //   BMFMarker marker = BMFMarker.icon(
+                    //
+                    //       isLockedToScreen: true,
+                    //       position:
+                    //       BMFCoordinate(resultmiddle.lat, resultmiddle.lon),
+                    //       title: 'flutterMaker',
+                    //       titleOptions: BMFTitleOptions(
+                    //           text: value.name,
+                    //           fontSize: 40,
+                    //           fontColor: HexColor("#fff1b8"),
+                    //           // bgColor: Colors.white,
+                    //           titleAnchorY: -1.6),
+                    //       identifier: value.name,
+                    //       icon: 'assets/images/nav-middle.png');
+                    //   // print(marker.getId())
+                    //   myMapController?.addMarker(marker);
+                    //   g_map_BMFMarkerID[marker.toMap()['id']]=value.name;
+                    //   // g_listBMFMarker.add(marker);
+                    //
+                    // }
                   });
-                  myMapController?.setCustomMapStyle(
-                      'assets/file/map_style', 0);
-                  BMFCustomMapStyleOption customMapStyleOption =
-                  BMFCustomMapStyleOption(
-                      customMapStyleID: "8cb21a1d90eb926393abba2f69a2a356");
-                  myMapController?.setCustomMapStyleWithOptionPath(
-                      customMapStyleOption: customMapStyleOption,
-                      preload: (String? path) {
-                        print("object");
-                      },
-                      success: (String? path) {
-                        print("成功");
-                      },
-                      error: (int? errorCode, String? path) {
-                        print("失败了");
-                      });
+                  myMapController!.setMapClickedMarkerCallback(
+                      callback: (BMFMarker marker) {
+                    // marker.fromMap(map)
+                    print('所有标记点${g_map_BMFMarkerID}');
+                    print("这是${marker.toMap()['id']}");
+                    dynamic _id = marker.toMap()['id'];
+                    print("学校${g_map_BMFMarkerID[_id]}");
+                    Get.toNamed('/school_info',
+                        arguments: {"name": g_map_BMFMarkerID[_id]});
+                  });
                   // onBMFMapCreated(controller);
                 },
                 mapOptions: mapOptions,

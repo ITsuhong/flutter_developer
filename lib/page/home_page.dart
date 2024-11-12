@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
 
   onTab(int index) {
     if (index == 3) {
-      return Get.toNamed('/Amap');
+      return Get.toNamed('/policy');
     }
     currentIndex.value = index;
     _controller.jumpToPage(index);
@@ -67,11 +67,11 @@ class _HomePageState extends State<HomePage> {
             itemCount: pages.length,
             itemBuilder: (context, index) =>KeepAliveWrapper(child:  pages[index]),
           ),
-          Obx(() => Positioned(
-              child: currentIndex.value == 0 ? SizedBox() : ScrollBarWidget(),
-              bottom: 0,
-              left: 0,
-              right: 0)),
+          // Obx(() => Positioned(
+          //     child: currentIndex.value == 0 ? SizedBox() : ScrollBarWidget(),
+          //     bottom: 0,
+          //     left: 0,
+          //     right: 0)),
         ],
       ),
       bottomNavigationBar: Obx(() => CusBottomBar(

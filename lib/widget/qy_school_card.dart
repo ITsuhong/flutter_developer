@@ -61,7 +61,7 @@ class _SchoolCardState extends State<QYSchoolCard> {
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
                   "assets/school/primary/9.jpg",
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                   width: 360.w,
                   height: 180.h,
                 ),

@@ -65,7 +65,7 @@ class _SchoolCardState extends State<SchoolCard> {
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
                   widget.school.url,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                   width: 360.w,
                   height: 180.h,
                 ),

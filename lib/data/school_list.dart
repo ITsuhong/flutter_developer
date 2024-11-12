@@ -43,7 +43,7 @@ class SchoolList {
       url: "assets/school/primary/3.png",
     ),
     School(
-      title: "以‘巴金小学’为底蕴",
+      title: "以‘巴金精神’为底蕴",
       fullName: "成都市东城根街小学",
       name: "东城根街小学",
       way: "划片正读",
@@ -63,7 +63,7 @@ class SchoolList {
       url: "assets/school/primary/5.png",
     ),
     School(
-      title: "石室‘5+4’ 特色项目校",
+      title: "‘5+4’ 特色项目校",
       name: "蜀华学校",
       fullName: "成都市石室联合中学蜀华分校",
       way: "划片正读",
